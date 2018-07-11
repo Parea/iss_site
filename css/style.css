@@ -1,0 +1,25 @@
+body, html {
+  margin: 0px;
+}
+
+#form{
+  background: url('../img/bureau.png'), no-repeat;
+  background-size: cover;
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 500px;
+  margin: auto;
+  box-shadow: 8px 8px 8px black;
+}
+
+h2, h1{
+  text-align: center;
+  color:rgb(0, 0, 0);
+}
+
+label{
+  color: rgb(0, 0, 0);
+}
+.required {
+  color:#E5224C;
+}
