@@ -78,7 +78,7 @@ $news = $bdd->query('SELECT * FROM iss_news ORDER BY date_publication DESC LIMIT
       <div class="row">
         <?php while($row = $producs->fetch()) { ?> 
           <div class="col-lg-3 col-sm-5 mb-4">
-            <div class="card h-80">
+            <div class="card h-80  text-center">
               <img style="width: 350px; height: 150px;" class="img-fluid thumbnail" src="../img/producs/<?= $row['picture'] ?> "/>
               <div class="card-footer">
                 <p class="card-text" style=""><?= $row['name']?></p>
@@ -98,7 +98,7 @@ $news = $bdd->query('SELECT * FROM iss_news ORDER BY date_publication DESC LIMIT
       <div class="row">
         <?php while($row = $news->fetch()) { ?>
           <div class="col-lg-4 col-sm-7 mb-3 portfolio-item">
-            <div class="card h-100">
+            <div class="card w-95 text-center">
               <img class="card-img-top" style="width: 350px; height:200px;" class="img-fluid thumbnail" src="../img/news/<?= $row ['picture'] ?>" >
               <div class="card-body">
                 <h4 class="card-title">

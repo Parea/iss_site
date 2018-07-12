@@ -84,16 +84,16 @@ $producs = $bdd->query('SELECT * FROM iss_producs ORDER BY date DESC');
       <div class="row">
         <?php while($row = $producs->fetch()) { ?> 
           <div class="col-lg-4 col-sm-8 mb-3">
-            <div class="card card-outline-danger">
+            <div class="card card-outline-danger w-90 text-center">
               <h3 class="card-header bg-success text-white"><?= $row['name']?></h3>
               <img style="width: 350px; height: 250px;" class="img-fluid thumbnail" src="../img/producs/<?= $row['picture'] ?> "/>
               <div class="card-body">
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Périphérique: <?= $row['model']?></li>
-                <li class="list-group-item">Marque: <?= $row['mark']?></li>
-                <li class="list-group-item">Description: <?= $row['description']?></li>
-                <li class="list-group-item">Prix: <?= $row['price']?> Fr</li>
+                <li class="list-group-item"><?= $row['model']?></li>
+                <li class="list-group-item"><?= $row['mark']?></li>
+                <li class="list-group-item"><?= $row['description']?></li>
+                <li class="list-group-item"><?= $row['price']?> Fr</li>
               </ul>
             </div>
           </div>

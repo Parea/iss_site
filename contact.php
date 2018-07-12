@@ -2,32 +2,42 @@
 // Check for empty fields
 if(isset($_POST['sendEmailButton'])) {
   
-  // Création et envoie du message
-  $to='test.paretz@gmail.com';
-  $subject='Formulaire de contact du site ISS';
-  $header = "MIME-Version: 1.0" . "\r\n";
-  $header.= 'From: Prise de contact-ISS'."\n";
-  $header.= 'CC: taie.taataparea1@gmail.com'."\n";
-  $header.="Content-type:text/html;charset=UTF-8"."\n";
-  $message='
+  /////////////////////////////////////Création et envoie du message//////////////////////////////////////////
+  $mailSupport='test.paretz@gmail.com';
+  $boundary = "-----=   Message envoyer automatiquement ne pas répondre direct dessus ce mail =----";
+  $passage_line = "\n";
+  $messageHtml='
   <html>
-    <head>
-      <title>Demande de reseignement</title>
-    </head>
     <body>
-      <div align="center">
+      <div>
         <h3>Vous avez reçu un messsage depuis le formulaire de contact voici les details:</h3><br/>
       </div>
       <div>
-        <p>Nom:' .$_POST['lastname'].'<br/>
-        Prénom:' .$_POST['firstname'].'<br/>
-        Email:' .$_POST['email'].'<br/>
-        Message:' .$_POST['message'].'<br/></p>
+        <p>Nom: '.$_POST['lastname'].'<br/>
+        Prénom: '.$_POST['firstname'].'<br/>
+        Email: '.$_POST['email'].'<br/>
+        Message: '.$_POST['message'].'<br/></p>
       </div>
     </body>
   </html>
   ';
-  mail($to, $subject, $message, $header);
+
+  //------------Création du header-----------------//
+  $subject='Formulaire de contact du site ISS';
+  $header = "MIME-Version: 1.0".$passage_line;
+  $header.= 'From: Prise de contact-ISS'.$passage_line;
+  $header.= 'CC: taie.taataparea1@gmail.com'.$passage_line;
+  $header.="Content-Type:text/html;charset=UTF-8".$passage_line." boudary=\"$boundary\"".$passage_line;
+  $header.="Content-Transfert-Encoding: 8bits".$passage_line;
+  $header .= "X-Priority: 1".$passage_ligne;
+
+  //--------------Création du message--------------//
+  $message = $passage_line."-----------------".$boundary."-----------------".$passage_line;
+  $message.=$messageHtml.$passage_line;
+  $message.= $passage_line."-----------------".$boundary."-----------------".$passage_line;
+
+  //---------Encodage et envoie du mail--------------//
+  mail($mailSupport, $subject, $message, $header);
   $msg = "Votre message a bien été envoyé!";
 
 } else {
@@ -35,18 +45,26 @@ if(isset($_POST['sendEmailButton'])) {
 }
 
 // // Création et envoie du message
-// //$header="MIME-Version: 1.0\r\n";
-// $header= 'From: Prise de contact-ISS'."\n";
-// $header.='Content-Type:text\html; charset="utf-8"';
-// $header.='Content-Transfert-Encoding: 8bit';
-
 // $to='test.paretz@gmail.com';
 // $subject='Formulaire de contact du site ISS';
+// $header = "MIME-Version: 1.0" . "\r\n";
+// $header.= 'From: Prise de contact-ISS'."\n";
+// $header.= 'CC: taie.taataparea1@gmail.com'."\n";
+// $header.="Content-type:text/html;charset=UTF-8"."\n";
 // $message='
 // <html>
+//   <head>
+//     <title>Demande de reseignement</title>
+//   </head>
 //   <body>
 //     <div align="center">
-//       envoyer ce mail avec PHP ceci est un test
+//       <h3>Vous avez reçu un messsage depuis le formulaire de contact voici les details:</h3><br/>
+//     </div>
+//     <div>
+//       <p>Nom:' .$_POST['lastname'].'<br/>
+//       Prénom:' .$_POST['firstname'].'<br/>
+//       Email:' .$_POST['email'].'<br/>
+//       Message:' .$_POST['message'].'<br/></p>
 //     </div>
 //   </body>
 // </html>
@@ -157,9 +175,10 @@ if(isset($_POST['sendEmailButton'])) {
       <!-- Contact Form -->
       <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
       <div class="row">
-        <div class="col-lg-8 col-sm-8 offset-lg-2 mb-4">
-          <h3>Envoyer-nous un mail</h3>
-          <form method="POST" action="">
+        <div id="form" class="col-lg-6 col-sm-12 mb-4">
+          <h3 align="center">Envoyer-nous un mail</h3>
+          <?php if(isset($_POST['sendEmailButton'])) { echo $msg; }// Permet d'afficher le message si le mail a bien était envoyer ou pas ?>
+          <form method="POST">
             <div class="control-group form-group">
               <div class="controls">
                 <label>Nom</label>
@@ -189,7 +208,6 @@ if(isset($_POST['sendEmailButton'])) {
             <!-- For success/fail messages -->
             <button type="submit" class="btn btn-success pull-right" name="sendEmailButton" id="sendEmailButton"><i class="fas fa-paper-plane"> Envoyer message</i></button>
           </form>
-          <?php if(isset($_POST['sendEmailButton'])) { echo $msg; }// Permet d'afficher le message si le mail a bien était envoyer ou pas ?>
         </div>
 
       </div>
