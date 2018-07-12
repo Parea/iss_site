@@ -3,17 +3,26 @@
 if(isset($_POST['sendEmailButton'])) {
   
   // Création et envoie du message
-  $header= 'From: Prise de contact-ISS'."\n";
-  $header.='Content-Type:text\html; charset="utf-8"';
-  $header.='Content-Transfert-Encoding: 8bit';
-
   $to='test.paretz@gmail.com';
   $subject='Formulaire de contact du site ISS';
+  $header = "MIME-Version: 1.0" . "\r\n";
+  $header.= 'From: Prise de contact-ISS'."\n";
+  $header.= 'CC: taie.taataparea1@gmail.com'."\n";
+  $header.="Content-type:text/html;charset=UTF-8"."\n";
   $message='
   <html>
+    <head>
+      <title>Demande de reseignement</title>
+    </head>
     <body>
       <div align="center">
-        envoyer ce mail avec PHP ceci est un test
+        <h3>Vous avez reçu un messsage depuis le formulaire de contact voici les details:</h3><br/>
+      </div>
+      <div>
+        <p>Nom:' .$_POST['lastname'].'<br/>
+        Prénom:' .$_POST['firstname'].'<br/>
+        Email:' .$_POST['email'].'<br/>
+        Message:' .$_POST['message'].'<br/></p>
       </div>
     </body>
   </html>
