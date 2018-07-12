@@ -38,10 +38,10 @@
               <a class="nav-link" href="about.php">Société ISS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pricing.php">Nos offres produit</a>
+              <a class="nav-link" href="services.php">Nos réalisation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pricing.php">Nos offres</a>
+              <a class="nav-link" href="pricing.php">Nos offres produit</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>

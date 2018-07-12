@@ -133,7 +133,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
               </div>
               <div class="form-group">
                 <label for="description">Description<span class="required">*</span></label>
-                <textarea required type="text" name="description" class="form-control" id="description" placeholder="your description" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_news['description'] ?>"<?php } ?>/></textarea>
+                <textarea required type="text" name="description" class="form-control" id="description" placeholder="your description" /><?php if( $mode_edition == 1 ) { ?><?= $edit_news['description'] ?><?php } ?></textarea>
               </div>
               <div class="form-group">
                 <label for="picture">Image<span class="required">*</span></label>

@@ -7,11 +7,11 @@ $mode_edition = 0;
 if(isset($_GET['edit']) AND !empty($_GET['edit'])) {
   $mode_edition = 1;
   $edit_id = htmlspecialchars($_GET['edit']);
-  $edit_user = $bdd->prepare('SELECT * FROM iss_producs WHERE id = ?');
-  $edit_user->execute(array($edit_id));
+  $edit_producs = $bdd->prepare('SELECT * FROM iss_producs WHERE id = ?');
+  $edit_producs->execute(array($edit_id));
 
-  if($edit_user->rowCount() == 1) {// permet de regarder si le compte existe ou pas
-    $edit_user = $edit_user->fetch();
+  if($edit_producs->rowCount() == 1) {// permet de regarder si le compte existe ou pas
+    $edit_producs = $edit_producs->fetch();
   } else {
       die("Erreur: Le produit concerné n'existe pas...");
     }
@@ -133,7 +133,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
               <form method="POST" action="addProducs.php" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="name">Nom<span class="required">*</span></label>
-                  <input required type="text" name="name" class="form-control" id="name" placeholder="your name" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_user['name'] ?>"<?php } ?>/>
+                  <input required type="text" name="name" class="form-control" id="name" placeholder="your name" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_producs['name'] ?>"<?php } ?>/>
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
@@ -169,17 +169,17 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                 </div>
                 <div class="form-group">
                   <label for="description">Description<span class="required">*</span></label>
-                  <textarea required type="text" name="description" class="form-control" id="description" placeholder="your description" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_user['description'] ?>"<?php } ?>/></textarea> 
+                  <textarea required type="text" name="description" class="form-control" id="description" placeholder="your description"/><?php if( $mode_edition == 1 ) { ?><?= $edit_producs['description'] ?>"<?php } ?></textarea> 
                 </div>
                 <div class="form-group">
                   <p>  
                     <label for="price">Prix en XPF<span class="required">*</span></label>
-                    <input required type="text" class="form-control" name="price" placeholder="Enter price" id="price" class="price" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_user['price'] ?>"<?php } ?>/>
+                    <input required type="text" class="form-control" name="price" placeholder="Enter price" id="price" class="price" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_producs['price'] ?>"<?php } ?>/>
                   </p> 
                 </div>
                 <div class="form-group">
                   <label for="picture">Image<span class="required">*</span></label>
-                  <input type="file" accept="image/*" name="picture" onchange="loadFile(event)" <?php if( $mode_edition == 1 ) { ?> value="<?= $edit_user['picture'] ?>"<?php } ?>/>
+                  <input type="file" accept="image/*" name="picture" onchange="loadFile(event)"/>
                   <img class="img-fluid" id="output" />
                 </div>
                 <?php if ($mode_edition == 1): ?>
