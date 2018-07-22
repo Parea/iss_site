@@ -15,7 +15,7 @@ $news = $bdd->query('SELECT * FROM iss_news ORDER BY date_publication DESC LIMIT
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ISS Accueil</title>
+    <title> Accueil</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@ $news = $bdd->query('SELECT * FROM iss_news ORDER BY date_publication DESC LIMIT
   <body>
 
     <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #52ec90;" "fixed-top">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #52ec90;">
     <div class="container">
       <a class="navbar-brand" href="index.php">ISS - Tahiti</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +78,8 @@ $news = $bdd->query('SELECT * FROM iss_news ORDER BY date_publication DESC LIMIT
       <div class="row">
         <?php while($row = $producs->fetch()) { ?> 
           <div class="col-lg-3 col-sm-5 mb-4">
-            <div class="card h-80  text-center">
-              <img style="width: 350px; height: 150px;" class="img-fluid thumbnail" src="../img/producs/<?= $row['picture'] ?> "/>
+            <div class="card w-100 text-center">
+              <img style="width: 350px; height: 300px;" class="img-fluid thumbnail" src="../img/producs/<?= $row['picture'] ?> "/>
               <div class="card-footer">
                 <p class="card-text" style=""><?= $row['name']?></p>
               </div>

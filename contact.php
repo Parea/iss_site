@@ -29,7 +29,7 @@ if(isset($_POST['sendEmailButton'])) {
   $header.= 'CC: taie.taataparea1@gmail.com'.$passage_line;
   $header.="Content-Type:text/html;charset=UTF-8".$passage_line." boudary=\"$boundary\"".$passage_line;
   $header.="Content-Transfert-Encoding: 8bits".$passage_line;
-  $header .= "X-Priority: 1".$passage_ligne;
+  $header .= "X-Priority: 1".$passage_line;
 
   //--------------Création du message--------------//
   $message = $passage_line."-----------------".$boundary."-----------------".$passage_line;
@@ -167,15 +167,14 @@ if(isset($_POST['sendEmailButton'])) {
           <p><i class="fas fa-home fa-lg"> Immeuble Heitiare, Pirae, Tahiti </i></p>
           <p><i class="fas fa-phone-volume fa-lg">+689 49 43 43 43 </i></p>
           <p><i class="fas fa-envelope fa-lg"> name@example.com</i></p>
-          <i class="fas fa-clock fa-lg"> Lundi - Vendredi: 7:30 à 17h00</i>
+          <i class="fas fa-clock fa-lg"> Lundi - Vendredi: 7h30 à 17h00</i>
         </div>
       </div>
       <!-- /.row -->
 
       <!-- Contact Form -->
-      <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
       <div class="row">
-        <div id="form" class="col-lg-6 col-sm-12 mb-4">
+        <div id="contact" class="col-lg-6 col-sm-10 mb-4">
           <h3 align="center">Envoyer-nous un mail</h3>
           <?php if(isset($_POST['sendEmailButton'])) { echo $msg; }// Permet d'afficher le message si le mail a bien était envoyer ou pas ?>
           <form method="POST">
